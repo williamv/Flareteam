@@ -22,8 +22,4 @@ group :development, :test do
   gem "factory_girl_rails"
 end
 
-group :production do
-  gem "pg"
-end
-
 gem "jquery-rails"
