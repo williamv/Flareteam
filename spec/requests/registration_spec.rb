@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Registration page" do
+describe "Registration" do
   let(:email) { "user@example.com" }
   let(:password) { "password123" }
 
@@ -24,6 +24,6 @@ describe "Registration page" do
     fill_in "State", with: "IL"
 
     click_on "Sign up"
-    page.should have_content "Welcome"
+    page.should have_content "Sign out"
   end
 end
