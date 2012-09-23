@@ -18,7 +18,7 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          %a.brand(href="#") Flareteam
+          %a.brand{href: root_url} Flareteam
           - if user_signed_in?
             = link_to('Sign out', destroy_user_session_path, method: :delete)
 

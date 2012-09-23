@@ -7,6 +7,7 @@ gem "haml-rails"
 gem "devise"
 gem "simple_form"
 gem "twitter-bootstrap-rails"
+gem "country_select"
 
 group :assets do
   gem "sass-rails",   "~> 3.2.3"
@@ -16,6 +17,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem "ffaker"
   gem "sqlite3"
   gem "rspec-rails"
   gem "capybara-webkit"
