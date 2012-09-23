@@ -5,7 +5,7 @@ FactoryGirl.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     email { Faker::Internet.email }
-    password { Faker::Lorem.words(10) }
+    password { "Wow, this password is really very secure!" }
     organization_name { Faker::Company.name }
     emergency_role { Faker::Lorem.words(10) }
     mobile_phone_number { Faker::PhoneNumber.phone_number }

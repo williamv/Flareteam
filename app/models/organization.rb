@@ -3,5 +3,6 @@ class Organization < ActiveRecord::Base
     :name, :phone, :primary_contact_email, :primary_contact_name, 
     :primary_contact_phone, :state, :street_address
 
-  validates :name, presence: true
+  validates :name, :primary_contact_name, :primary_contact_phone,
+    :emergency_role, presence: true
 end

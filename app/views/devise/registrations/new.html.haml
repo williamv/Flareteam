@@ -3,13 +3,19 @@
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
     = f.error_notification
     .form-inputs
-      = f.input :email, :required => true, :autofocus => true
-      = f.input :password, :required => true
-      = f.input :password_confirmation, :required => true
+      = f.input :email, 
+        required: true, 
+        autofocus: true
+      = f.input :password, 
+        required: true,
+        hint: "At least 8 characters."
+      = f.input :password_confirmation, required: true
       = f.input :first_name
       = f.input :last_name
-      = f.input :organization_name
-      = f.input :emergency_role, label: "Role in emergencies"
+      = f.input :organization_name,
+        label: "To what organization do you belong?"
+      = f.input :emergency_role, 
+        label: "Role during emergencies"
       = f.input :mobile_phone_number
       = f.input :landline_phone_number
       = f.input :street_address
