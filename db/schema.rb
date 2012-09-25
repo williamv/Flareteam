@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(:version => 20120923000622) do
   end
 
   create_table "users", :force => true do |t|
+    t.integer  "organization_id"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "organization_name"
     t.string   "emergency_role"
     t.string   "street_address"
     t.string   "city"

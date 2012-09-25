@@ -1,9 +1,10 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
+      t.integer :organization_id
+      
       t.string :first_name
       t.string :last_name
-      t.string :organization_name
       t.string :emergency_role
 
       t.string :street_address
