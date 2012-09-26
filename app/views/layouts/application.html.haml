@@ -18,7 +18,7 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          %a.brand{href: root_url} Flareteam
+          = link_to "Flareteam", root_url, class: "brand"
           %ul.nav.pull-right
             %li.divider-vertical
             - if user_signed_in?
