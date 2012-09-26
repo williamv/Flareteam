@@ -1,6 +1,7 @@
-- @organizations.each do |organization|
-  .organization
-    = link_to organization.name, organization
-    = link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' }
+%ul
+  - @organizations.each do |organization|
+    %li.organization
+      = link_to organization.name, organization
+      = link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' }
 
 = link_to 'New Organization', new_organization_path

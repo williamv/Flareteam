@@ -36,7 +36,7 @@ describe "Organizations" do
 
     describe "viewing an organization" do
       it "shows the organization" do
-        visit root_url
+        visit organizations_url
         page.should have_content organization.name
 
         click_link organization.name

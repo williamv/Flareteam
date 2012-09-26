@@ -1,0 +1,9 @@
+%h1 Activations
+%ul
+  - @activations.each do |activation|
+    %li.activation
+      = link_to activation.title, activation
+      %p= activation.location
+      %p= activation.description
+
+= link_to "New Activation", new_activation_path, class: "btn"
