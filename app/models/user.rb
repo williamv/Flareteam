@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
     :first_name, :last_name, :emergency_role, :street_address, :city, :state, 
     :country, :mobile_phone_number, :landline_phone_number
+
+  def full_name
+    [first_name, last_name].join(" ")
+  end
 end

@@ -14,6 +14,7 @@ class ActivationsController < ApplicationController
   # GET /activations/1.json
   def show
     @activation = Activation.find(params[:id])
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb

@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
 
   validates :user, :activation, presence: true
 
-  attr_accessible :body, :user_id, :activation_id
+  attr_accessible :body, :title, :user_id, :activation_id
   alias_attribute :posted_at, :created_at
 
   def author

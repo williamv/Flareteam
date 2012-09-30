@@ -2,8 +2,9 @@ require 'spec_helper'
 include Warden::Test::Helpers
 
 describe "Activations" do
+  let(:user) { FactoryGirl.create(:user) }
   before do
-    login_as FactoryGirl.create(:user), scope: :user
+    login_as user, scope: :user 
   end
 
   describe "creating an activation" do
@@ -61,6 +62,22 @@ describe "Activations" do
         page.should have_content "Activations"
         page.should_not have_content activation.title
       end 
+    end
+
+    describe "commenting on an activation" do
+      let(:comment_title) { Faker::Lorem.sentence}
+      let(:comment_text) { Faker::Lorem.paragraph }
+
+      it "adds a comment to the activation" do
+        visit activation_url(activation)
+        fill_in "comment_title", with: comment_title
+        fill_in "comment_body", with: comment_text
+        click_on "Post Update"
+
+        page.should have_content comment_title
+        page.should have_content comment_text
+        page.should have_content user.full_name
+      end
     end
   end
 end

@@ -14,31 +14,32 @@
 ActiveRecord::Schema.define(:version => 20120928011528) do
 
   create_table "activations", :force => true do |t|
-    t.string   "title"
-    t.string   "location"
-    t.text     "description"
+    t.string   "title",       :null => false
+    t.string   "location",    :null => false
+    t.text     "description", :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "comments", :force => true do |t|
-    t.text     "body"
-    t.integer  "user_id"
-    t.integer  "activation_id"
+    t.string   "title"
+    t.text     "body",          :null => false
+    t.integer  "user_id",       :null => false
+    t.integer  "activation_id", :null => false
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
   create_table "organizations", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                  :null => false
     t.string   "street_address"
     t.string   "city"
     t.string   "state"
     t.string   "phone"
-    t.string   "primary_contact_name"
-    t.string   "primary_contact_phone"
+    t.string   "primary_contact_name",  :null => false
+    t.string   "primary_contact_phone", :null => false
     t.string   "primary_contact_email"
-    t.text     "emergency_role"
+    t.text     "emergency_role",        :null => false
     t.string   "employee_count_range"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false

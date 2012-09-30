@@ -1,7 +1,9 @@
 Flareteam::Application.routes.draw do
-  resources :activations
+  resources :activations do
+    resources :comments
+  end
 
-  resources :activations, :organizations
+  resources :organizations
 
   devise_for :users, controllers: { sessions: "sessions" }
 

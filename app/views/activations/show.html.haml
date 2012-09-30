@@ -1,9 +1,30 @@
 %p.notice= notice
 
-%h1= @activation.title
-%p= @activation.location
-%p= @activation.description
+%h2= @activation.title
+%p.muted
+  = @activation.location
+  = l(@activation.created_at)
+%p.lead= @activation.description
 
-= link_to "Edit", edit_activation_path(@activation), class: "btn"
-= link_to "Destroy", @activation, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+- @activation.comments.each do |comment|
+  %hr
+  %h3= title_for(comment)
+  %blockquote
+    %p
+      = comment.body
+    %small= authorship_details_for(comment)
+
+= simple_form_for [@activation, @comment] do |f|
+  %legend Post an Update
+  = f.input :title, label: false, placeholder: "Title"
+  = f.input :body, label: false, placeholder: "Message"
+  = f.button :submit, "Post Update"
+
+
+= link_to "Edit", edit_activation_path(@activation), 
+  class: "btn btn-small"
+= link_to "Destroy Activation", @activation, 
+  method: :delete, 
+  data: { confirm: "Are you sure?" }, 
+  class: "btn btn-small btn-danger"
 = link_to "Back", activations_path
