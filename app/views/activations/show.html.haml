@@ -6,7 +6,7 @@
   = l(@activation.created_at)
 %p.lead= @activation.description
 
-- @activation.comments.each do |comment|
+- @activation.comments.reverse.each do |comment|
   %hr
   %h3= title_for(comment)
   %blockquote
