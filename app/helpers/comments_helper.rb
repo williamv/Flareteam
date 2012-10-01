@@ -5,6 +5,6 @@ module CommentsHelper
   end
 
   def title_for(comment)
-    comment.title.presence || comment.body[0..9]
+    comment.title.presence || truncate(comment.body, length: 15)
   end
 end

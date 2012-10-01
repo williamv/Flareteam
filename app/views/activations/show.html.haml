@@ -1,30 +1,38 @@
 %p.notice= notice
 
-%h2= @activation.title
-%p.muted
-  = @activation.location
-  = l(@activation.created_at)
-%p.lead= @activation.description
+.row
+  .span8
+    %h1= @activation.title
+    %p.muted
+      = @activation.location
+      = l(@activation.created_at)
+    %p.lead= @activation.description
+  .span4
+    = link_to "Edit", edit_activation_path(@activation), 
+      class: "btn btn-mini"
+    = link_to "Destroy Activation", @activation, 
+      method: :delete, 
+      data: { confirm: "Are you sure?" }, 
+      class: "btn btn-mini btn-danger"
 
-- @activation.comments.reverse.each do |comment|
-  %hr
-  %h3= title_for(comment)
-  %blockquote
-    %p
-      = comment.body
-    %small= authorship_details_for(comment)
+.row
+  .span8
+    - @activation.comments.reverse.each do |comment|
+      .row
+        .span6
+          %h3= title_for(comment)
+          %blockquote
+            %p
+              = comment.body
+            %small= authorship_details_for(comment)
 
-= simple_form_for [@activation, @comment] do |f|
-  %legend Post an Update
-  = f.input :title, label: false, placeholder: "Title"
-  = f.input :body, label: false, placeholder: "Message"
-  = f.button :submit, "Post Update", class: "btn btn-primary"
-
-
-= link_to "Edit", edit_activation_path(@activation), 
-  class: "btn btn-small"
-= link_to "Destroy Activation", @activation, 
-  method: :delete, 
-  data: { confirm: "Are you sure?" }, 
-  class: "btn btn-small btn-danger"
-= link_to "Back", activations_path
+    = simple_form_for [@activation, @comment] do |f|
+      %legend Post an Update
+      .form-inputs
+        = f.input :title, label: false, placeholder: "Title"
+        = f.input :body, 
+          label: false, 
+          placeholder: "Message", 
+          input_html: { class: "input-xxlarge", rows: 10 }
+      .form-actions
+        = f.button :submit, "Post Update", class: "btn btn-primary pull-right"
