@@ -47,15 +47,15 @@ ActiveRecord::Schema.define(:version => 20120928011528) do
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "organization_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "emergency_role"
+    t.integer  "organization_id",                        :null => false
+    t.string   "first_name",                             :null => false
+    t.string   "last_name",                              :null => false
+    t.string   "emergency_role",                         :null => false
     t.string   "street_address"
     t.string   "city"
     t.string   "state"
-    t.string   "mobile_phone_number"
-    t.string   "landline_phone_number"
+    t.string   "mobile_phone_number",                    :null => false
+    t.string   "landline_phone_number",                  :null => false
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
