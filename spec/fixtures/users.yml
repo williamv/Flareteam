@@ -1,0 +1,17 @@
+eddie:
+  organization_id: 1
+  first_name: "Eddie"
+  last_name: "Jones"
+  emergency_role: "Coordinator"
+  mobile_phone_number: "555-555-5555"
+  landline_phone_number: "555-555-5555"
+  email: "eddie@example.com"
+
+jane:
+  organization_id: 1
+  first_name: "Jane"
+  last_name: "Finch"
+  emergency_role: "Human Services"
+  mobile_phone_number: "555-555-5555"
+  landline_phone_number: "555-555-5555"
+  email: "jane@example.com"

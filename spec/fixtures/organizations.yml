@@ -1,0 +1,6 @@
+acme:
+  id: 1
+  name: "Acme Corp."
+  primary_contact_name: "Eddie Jones"
+  primary_contact_phone: "555-555-5555"
+  emergency_role: "Human Services"
