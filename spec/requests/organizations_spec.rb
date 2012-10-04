@@ -3,7 +3,7 @@ include Warden::Test::Helpers
 
 describe "Organizations" do
   before do
-    login_as FactoryGirl.create(:user), scope: :user
+    login_as users(:eddie), scope: :user
   end
 
   describe "creating an organization" do
@@ -32,7 +32,6 @@ describe "Organizations" do
 
   context "with an organization" do
     let!(:organization) { FactoryGirl.create(:organization) }
-    before { Organization.count.should == 1 }
 
     describe "viewing an organization" do
       it "shows the organization" do
@@ -60,8 +59,11 @@ describe "Organizations" do
     describe "destroying an organization" do
       it "destroys the organization" do
         visit organizations_url
-        within(".organization") do
-          click_link "Destroy"
+
+        Organization.count.times do
+          within(".organization") do
+            click_link "Destroy"
+          end
         end
 
         page.should_not have_content organization.name

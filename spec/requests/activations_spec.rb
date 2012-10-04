@@ -2,7 +2,7 @@ require 'spec_helper'
 include Warden::Test::Helpers
 
 describe "Activations" do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { users(:eddie) }
   before do
     login_as user, scope: :user 
   end
