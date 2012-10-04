@@ -41,7 +41,7 @@ class ActivationsController < ApplicationController
   # POST /activations
   # POST /activations.json
   def create
-    @activation = Activation.new(params[:activation])
+    @activation = current_user.activations.build(params[:activation])
 
     respond_to do |format|
       if @activation.save
