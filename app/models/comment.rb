@@ -7,6 +7,8 @@ class Comment < ActiveRecord::Base
   attr_accessible :body, :title, :user_id, :activation_id
   alias_attribute :posted_at, :created_at
 
+  after_save :notify_subscribers
+
   def author
     user.full_name
   end
@@ -15,4 +17,7 @@ class Comment < ActiveRecord::Base
     title || body[0..(teaser_length - 1)]
   end
 
+  def notify_subscribers
+    ActivationMailer.comment_notification(activation.subscribers, self)
+  end
 end
