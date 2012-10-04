@@ -5,5 +5,7 @@ FactoryGirl.define do
     title { Faker::Company.bs }
     location { Faker::Address.city }
     description { Faker::Lorem.paragraph }
+
+    association :user
   end
 end

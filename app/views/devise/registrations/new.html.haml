@@ -6,6 +6,7 @@
       = f.input :email, 
         required: true, 
         autofocus: true
+      = f.association :organization
       = f.input :password, 
         required: true,
         hint: "At least 10 characters."

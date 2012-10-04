@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120928011528) do
 
   create_table "activations", :force => true do |t|
+    t.integer  "user_id",     :null => false
     t.string   "title",       :null => false
     t.string   "location",    :null => false
     t.text     "description", :null => false

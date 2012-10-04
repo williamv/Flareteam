@@ -1,4 +1,5 @@
 class Activation < ActiveRecord::Base
+  belongs_to :user
   has_many :comments
   validate :title, :description, :location, presence: true
 

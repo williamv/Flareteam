@@ -3,6 +3,7 @@ require "spec_helper"
 describe "Registration" do
   let(:email) { "user@example.com" }
   let(:password) { "Wow, this password is really very secure!" }
+  let(:organization) { organizations(:acme) }
 
   it "registers a new user" do
     visit new_user_registration_url
@@ -11,6 +12,8 @@ describe "Registration" do
     fill_in "Email", with: email
     fill_in "Password", with: password
     fill_in "Password confirmation", with: password
+
+    select organization.name, from: "Organization"
 
     fill_in "First name", with: "John"  
     fill_in "Last name", with: "Doe"

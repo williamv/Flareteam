@@ -9,5 +9,7 @@ FactoryGirl.define do
     emergency_role { Faker::Lorem.words(10) }
     mobile_phone_number { Faker::PhoneNumber.phone_number }
     landline_phone_number { Faker::PhoneNumber.phone_number }
+
+    association :organization
   end
 end
