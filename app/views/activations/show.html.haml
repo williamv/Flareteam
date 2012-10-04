@@ -20,7 +20,7 @@
     - @activation.comments.reverse.each do |comment|
       .row
         .span6
-          %h3= title_for(comment)
+          %h3= comment.teaser
           %blockquote
             %p
               = comment.body

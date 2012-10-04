@@ -10,4 +10,9 @@ class Comment < ActiveRecord::Base
   def author
     user.full_name
   end
+
+  def teaser(teaser_length = 15)
+    title || body[0..(teaser_length - 1)]
+  end
+
 end
