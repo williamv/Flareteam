@@ -1,5 +1,5 @@
 class ActivationMailer < ActionMailer::Base
-  default from: "notifications@flareteam.com"
+  default from: "noreply@flareteam.com"
 
   def comment_notification(users, comment)
     mail(bcc: users.map(&:email), 

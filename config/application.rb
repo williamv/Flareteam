@@ -15,7 +15,8 @@ module Flareteam
     config.filter_parameters += [:password]
     config.active_support.escape_html_entities_in_json = true
     config.active_record.whitelist_attributes = true
-    config.action_mailer.default_url_options = { :host => "flareteam.com" }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
     config.assets.enabled = true
     config.assets.version = '1.0'
