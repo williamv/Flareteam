@@ -18,6 +18,6 @@ class Comment < ActiveRecord::Base
   end
 
   def notify_subscribers
-    ActivationMailer.comment_notification(activation.subscribers, self)
+    ActivationMailer.comment_notification(activation.subscribers, self).deliver
   end
 end

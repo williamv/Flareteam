@@ -8,21 +8,25 @@ describe Comment do
   let(:activation) { FactoryGirl.create(:activation,
                                         user: user) }
 
-  let(:comment) { FactoryGirl.create(:comment, 
-                                     activation: activation,
-                                     user: user) }
+  let(:comment) { FactoryGirl.build(:comment, 
+                                    activation: activation,
+                                    user: user) }
 
   before { ActivationMailer.stub(:comment_notification) }
 
-  describe ".notify_subscribers" do
-    it "enqueues a notification email" do
-      ActivationMailer.should_receive(:comment_notification).with(
-        organization.users, comment)
-      comment.notify_subscribers
+  describe "after_save" do
+    it "calls notify_subscribers" do
+      comment.should_receive(:notify_subscribers).once
+      comment.save!
     end
   end
 
   describe "#teaser" do
+    before do
+      comment.stub(:notify_subscribers)
+      comment.save!
+    end
+
     context "with no title" do
       before { comment.update_attributes(title: nil) }
       it "returns a substring of the body" do
@@ -39,7 +43,10 @@ describe Comment do
   end
 
   describe "#author" do
-    before { comment.user.should_not be_nil }
+    before do
+      comment.stub(:notify_subscribers)
+      comment.save!
+    end
 
     it "returns the authors full name" do
       comment.author.should == comment.user.full_name
