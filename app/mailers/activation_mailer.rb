@@ -4,6 +4,6 @@ class ActivationMailer < ActionMailer::Base
   def comment_notification(users, comment)
     mail(bcc: users.map(&:email), 
          subject: comment.teaser,
-         body: activation_comment_url(comment.id, comment.activation_id))
+         body: activation_url(comment.activation))
   end
 end

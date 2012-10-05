@@ -32,7 +32,7 @@ describe ActivationMailer do
 
     it "has a link to the comment in the body" do
       email = ActivationMailer.comment_notification(recipients, comment).deliver
-      email.body.should include(activation_comment_url(comment.id, activation.id))
+      email.body.should include(activation_url(activation))
     end
   end 
 end
