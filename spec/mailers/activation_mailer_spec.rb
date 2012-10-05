@@ -34,5 +34,10 @@ describe ActivationMailer do
       email = ActivationMailer.comment_notification(recipients, comment).deliver
       email.body.should include(activation_url(activation))
     end
+
+    it "has a the activation title name" do
+      email = ActivationMailer.comment_notification(recipients, comment).deliver
+      email.body.should include(activation.title)
+    end
   end 
 end

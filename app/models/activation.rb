@@ -5,6 +5,10 @@ class Activation < ActiveRecord::Base
 
   attr_accessible :description, :location, :title
 
+  def to_s
+    title
+  end
+
   def subscribers
     user.peers
   end

@@ -9,6 +9,12 @@ describe Activation do
 
   before { organization.users << members }
   
+  describe "to_s" do
+    it "returns the title" do
+      activation.to_s.should == activation.title
+    end
+  end
+  
   describe "#subscribers" do
     it "returns the parent organizations users" do
       activation.subscribers.should match_array(organization.users)
