@@ -11,7 +11,7 @@ FactoryGirl.define do
     primary_contact_name { Faker::Name.name }
     primary_contact_phone { Faker::PhoneNumber.phone_number }
     primary_contact_email { Faker::Internet.email }
-    emergency_role { Faker::Lorem.words(2) }
+    emergency_role { Faker::Lorem.sentence }
     employee_count_range "1-10"
   end
 end
