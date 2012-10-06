@@ -1,14 +1,13 @@
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f|
-  %legend Sign in
-  .form-inputs
-    %ol.unstyled
-      %li
-        = f.input :email, 
-          autofocus: true, 
-          required: false,
-          placeholder: "me@example.com"
-      %li
-        = f.input :password
-  .form-actions
-    = f.button :submit, "Sign in", class: 'btn-large'
-  = render "devise/shared/links"
+  - if flash.any?
+    .alert.alert-error= flash[:alert]
+  %fieldset#signin
+    %legend Sign in
+    .form-inputs
+      = f.input :email, 
+        autofocus: true, 
+        placeholder: "me@example.com"
+      = f.input :password
+    .form-actions
+      = f.button :submit, "Sign in", class: 'btn-large'
+= render "devise/shared/links"
