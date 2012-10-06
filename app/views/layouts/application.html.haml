@@ -23,7 +23,13 @@
             %li.divider-vertical
             - if user_signed_in?
               %li
-                = link_to('Sign out', destroy_user_session_path, method: :delete)
+                %a{href: edit_user_registration_path}
+                  %i.icon-user.icon-white
+                  Account
+              %li.divider-vertical
+              %li
+                = link_to('Sign out', destroy_user_session_path, 
+                  method: :delete)
 
     .container
       .content

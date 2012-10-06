@@ -10,7 +10,8 @@ describe "Profile page" do
   
   context "updating the user" do
     it "updates the user" do
-      visit edit_user_registration_path(user)
+      visit root_url
+      click_on "Account"
       page.should have_content "Edit User"
 
       fill_in "user_current_password", with: user.password
