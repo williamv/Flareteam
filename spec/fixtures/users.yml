@@ -6,7 +6,6 @@ eddie:
   mobile_phone_number: "555-555-5555"
   landline_phone_number: "555-555-5555"
   email: "eddie@example.com"
-  wants_email_notifications: true
 
 jane:
   organization_id: 1
@@ -16,4 +15,3 @@ jane:
   mobile_phone_number: "555-555-5555"
   landline_phone_number: "555-555-5555"
   email: "jane@example.com"
-  wants_email_notifications: true

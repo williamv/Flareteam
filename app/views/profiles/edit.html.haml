@@ -1,0 +1,12 @@
+= simple_form_for @profile, url: profile_path do |f|
+  %fieldset
+    %legend Profile Settings
+    .form-inputs
+      - if flash[:notice]
+        .alert= flash[:notice]
+      = f.error_notification
+      = f.input :wants_email_notifications,
+        label: "Email me with activation updates.",
+        wrapper: :checkbox
+    .form-actions
+      = f.submit

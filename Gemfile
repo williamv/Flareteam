@@ -22,6 +22,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "capybara-webkit"
   gem "factory_girl_rails"
+  gem "pry"
 end
 
 gem "pg"

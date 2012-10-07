@@ -5,6 +5,10 @@ describe User do
   let(:user) { FactoryGirl.create(:user,
                                   organization: organization) }
 
+  it "has a profile" do
+    user.profile.should_not be_nil
+  end
+
   describe "#full_name" do
     it "return the joined first and last names" do
       user.full_name.should == "#{user.first_name} #{user.last_name}"
@@ -22,15 +26,16 @@ describe User do
   end
 
   describe ".wanting_email_notifications" do
-    let(:another_user) { users(:eddie) }
-    before { another_user.update_attributes(wants_email_notifications: false) }
-
-    it "includes users who want emails (default case)" do
-      User.wanting_email_notifications.should include(user)
+    let(:user_without_email) { FactoryGirl.create(:user) }
+    let(:another_user_without_email) { FactoryGirl.create(:user) }
+    before do
+      user.profile.update_attributes(wants_email_notifications: true)
+      user_without_email.profile.update_attributes(wants_email_notifications: false)
+      another_user_without_email.profile.update_attributes(wants_email_notifications: false)
     end
 
-    it "omits users who do not want email notifications" do
-      User.wanting_email_notifications.should_not include(another_user)
+    it "only includes users who want emails" do
+      User.wanting_email_notifications.should match_array [user]
     end
   end
 end

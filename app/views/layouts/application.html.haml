@@ -23,9 +23,9 @@
             %li.divider-vertical
             - if user_signed_in?
               %li
-                %a{href: edit_user_registration_path}
+                %a{href: edit_profile_path }
                   %i.icon-user.icon-white
-                  Account
+                    Profile
               %li.divider-vertical
               %li
                 = link_to('Sign out', destroy_user_session_path, 

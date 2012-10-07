@@ -1,0 +1,21 @@
+%h1 Listing profiles
+
+%table
+  %tr
+    %th User
+    %th Wants email notifications
+    %th
+    %th
+    %th
+
+  - @profiles.each do |profile|
+    %tr
+      %td= profile.user_id
+      %td= profile.wants_email_notifications
+      %td= link_to 'Show', profile
+      %td= link_to 'Edit', edit_profile_path(profile)
+      %td= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Profile', new_profile_path
