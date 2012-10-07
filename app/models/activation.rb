@@ -10,6 +10,6 @@ class Activation < ActiveRecord::Base
   end
 
   def subscribers
-    user.peers
+    user.peers.wanting_email_notifications
   end
 end

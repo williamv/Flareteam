@@ -2,8 +2,15 @@ require 'spec_helper'
 
 describe Activation do
   let(:organization) { organizations(:acme) }
+  let(:other_organization) { organizations(:acme) }
   let(:poster) { users(:eddie) }
-  let(:members) { [poster, users(:jane)] }
+  let(:subscribing_user) { users(:jane) }
+  let(:non_member) { FactoryGirl.create(:user,
+                                        wants_email_notifications: true) }
+  let(:non_subscriber) { FactoryGirl.create(:user,
+                                            wants_email_notifications: false) }
+
+  let(:members) { [poster, non_subscriber, subscribing_user] }
   let(:activation) { FactoryGirl.create(:activation,
                                         user: poster)}
 
@@ -16,8 +23,8 @@ describe Activation do
   end
   
   describe "#subscribers" do
-    it "returns the parent organizations users" do
-      activation.subscribers.should match_array(organization.users)
+    it "returns the parent organizations subscribing users" do
+      activation.subscribers.should match_array([poster, subscribing_user])
     end
   end
 end
