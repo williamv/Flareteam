@@ -2,5 +2,4 @@ deployment:
   staging:
     branch: master
     commands:
-      - git checkout staging && git merge master && git push origin staging
       - git push git@heroku.com:flareteam-staging.git && heroku run rake db:migrate
