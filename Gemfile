@@ -25,6 +25,7 @@ group :development, :test do
   gem "pry"
 end
 
+gem "heroku"
 gem "pg"
 
 gem "jquery-rails"
