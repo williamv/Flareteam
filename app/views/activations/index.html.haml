@@ -1,9 +1,16 @@
-%h1 Activations
-%dl
-  - @activations.each do |activation|
-    %dt
-      = link_to activation.title, activation
-      = activation.location
-    %dd= activation.description
+.row
+  .span6
+    %h1 Activations
+  .actions.span2
+    = link_to "New Activation", new_activation_path, class: "btn btn-info"
 
-= link_to "New Activation", new_activation_path, class: "btn"
+%ul.unstyled
+  - @activations.each do |activation|
+    .row
+      .span6
+        %li
+          %h2
+            = link_to activation.title, activation
+          %p.muted #{l(activation.created_at)} in #{activation.location}
+          %p= activation.description
+

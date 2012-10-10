@@ -17,7 +17,7 @@
 
 .row
   .span8
-    - @activation.comments.reverse.each do |comment|
+    - @activation.comments.sort_by(&:created_at).each do |comment|
       .comment.row
         .span6
           %h3= comment.teaser
