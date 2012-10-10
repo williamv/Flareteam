@@ -1,8 +1,10 @@
+%p.notice= notice
+
 .row
-  .span6
-    %h1 Activations
-  .span2
-    .actions
+  .span8.page-header
+    %h1.pull-left 
+      Activations
+    .pull-right.actions
       = link_to "New Activation", new_activation_path, class: "btn btn-info"
 
 %ul.unstyled

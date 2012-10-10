@@ -9,12 +9,11 @@
         = l(@activation.created_at)
     .pull-right
       = link_to "Edit", edit_activation_path(@activation), 
-        class: "btn btn-mini"
+        class: "btn"
       = link_to "Destroy Activation", @activation, 
         method: :delete, 
-        data: { confirm: "Are you sure?" }, 
-        class: "btn btn-mini btn-danger"
-  .clearfix
+        data: { confirm: "Are you sure?" },
+        class: "btn btn-warning"
   .span8
     %p.lead= @activation.description
 
