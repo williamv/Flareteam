@@ -1,8 +1,9 @@
 .row
   .span6
     %h1 Activations
-  .actions.span2
-    = link_to "New Activation", new_activation_path, class: "btn btn-info"
+  .span2
+    .actions
+      = link_to "New Activation", new_activation_path, class: "btn btn-info"
 
 %ul.unstyled
   - @activations.each do |activation|
