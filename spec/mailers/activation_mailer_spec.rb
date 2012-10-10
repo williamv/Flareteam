@@ -27,7 +27,7 @@ describe ActivationMailer do
 
     it "has the comment title as the subject" do
       email = ActivationMailer.comment_notification(recipients, comment).deliver
-      email.subject.should include(comment.teaser)
+      email.subject.should include(activation.title)
     end
 
     it "has a link to the comment in the body" do
@@ -38,6 +38,11 @@ describe ActivationMailer do
     it "has a the activation title name" do
       email = ActivationMailer.comment_notification(recipients, comment).deliver
       email.body.should include(activation.title)
+    end
+
+    it "has a link to the user's profile" do
+      email = ActivationMailer.comment_notification(recipients, comment).deliver
+      email.body.should include(profile_url)
     end
   end 
 end
