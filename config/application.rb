@@ -18,6 +18,7 @@ module Flareteam
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+    config.autoload_paths += %W(#{config.root}/lib/devise)
     config.assets.enabled = true
     config.assets.version = '1.0'
   end
