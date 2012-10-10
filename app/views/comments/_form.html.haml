@@ -1,0 +1,11 @@
+= simple_form_for([@activation, @comment]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :body
+
+  .form-actions
+    = f.button :submit, 
+      label: "Update",
+      class: 'btn btn-primary'

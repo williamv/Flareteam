@@ -18,13 +18,15 @@
 .row
   .span8
     - @activation.comments.reverse.each do |comment|
-      .row
+      .comment.row
         .span6
           %h3= comment.teaser
           %blockquote
             %p
               = comment.body
             %small= authorship_details_for(comment)
+          %small.pull-right= link_to "Edit", 
+            edit_activation_comment_path(@activation, comment.id)
 
     = simple_form_for [@activation, @comment] do |f|
       %legend Post an Update

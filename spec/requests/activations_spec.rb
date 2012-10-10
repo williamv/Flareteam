@@ -77,6 +77,16 @@ describe "Activations" do
         page.should have_content comment_title
         page.should have_content comment_text
         page.should have_content user.full_name
+
+        within ".comment" do
+          click_on "Edit"
+        end
+
+        page.should have_content comment_text
+        fill_in "comment_body", with: "*redacted*"
+        click_on "Update"
+
+        page.should have_content "*redacted*"
       end
     end
   end
