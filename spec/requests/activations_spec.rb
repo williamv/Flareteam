@@ -57,7 +57,7 @@ describe "Activations" do
     describe "destroying the activation" do
       it "destroys the activation" do
         visit activation_url(activation)
-        click_link "Destroy"
+        click_link "Delete Activation"
 
         page.should have_content "Activations"
         page.should_not have_content activation.title
