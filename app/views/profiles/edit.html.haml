@@ -1,4 +1,4 @@
-= simple_form_for @profile, url: profile_path do |f|
+= simple_form_for @profile do |f|
   %fieldset
     %legend Profile Settings
     .form-inputs
@@ -9,4 +9,4 @@
         label: "Email me with activation updates.",
         wrapper: :checkbox
     .form-actions
-      = f.submit
+      = f.button :submit, class: 'btn btn-primary'
