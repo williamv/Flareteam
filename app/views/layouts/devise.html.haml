@@ -15,11 +15,7 @@
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
 
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          = link_to "Flareteam", root_url, class: "brand"
-
+    = render "shared/navbar"
     .container
       .content
         .row

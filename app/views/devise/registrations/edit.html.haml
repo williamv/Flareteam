@@ -1,12 +1,11 @@
-%h2
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = f.error_notification
   %fieldset
-    %legend Edit #{resource_name.to_s.humanize}
+    %legend Account
     .form-inputs
       = f.input :email, required: true, autofocus: true
       = f.input :password, :autocomplete => "off", required: false
       = f.input :password_confirmation, required: false
       = f.input :current_password, required: true
     .form-actions
-      = f.button :submit, "Update"
+      = f.button :submit, "Update", class: "btn btn-primary"

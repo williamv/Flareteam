@@ -1,0 +1,7 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      = link_to "Flareteam", root_url, class: "brand"
+      %ul.nav.pull-right
+        - if user_signed_in?
+          = render "shared/account_dropdown"

@@ -10,9 +10,10 @@ describe "Profile page" do
   context "updating the user" do
     it "updates the user" do
       visit root_url
-      click_on "Profile"
-      page.should have_content "Profile Settings"
+      click_on "Account"
+      find_field("user_email").value.should == user.email
 
+      click_on "Settings"
       notifications_checkbox = page.find("#profile_wants_email_notifications")
       notifications_checkbox.should be_checked
       page.uncheck "profile_wants_email_notifications"
