@@ -6,7 +6,7 @@ class ActivationMailer < ActionMailer::Base
          subject: "New comment on #{comment.activation}",
          body: "#{comment.author} posted about #{comment.activation} at #{comment.posted_at} - #{comment.body} 
          - #{activation_url(comment.activation)}.
-         To unsubscribe from notifications, go to #{profile_url}.
+         To unsubscribe from notifications, go to #{edit_profile_url}.
          ")
   end
 end

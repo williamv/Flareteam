@@ -42,7 +42,7 @@ describe ActivationMailer do
 
     it "has a link to the user's profile" do
       email = ActivationMailer.comment_notification(recipients, comment).deliver
-      email.body.should include(profile_url)
+      email.body.should include(edit_profile_url)
     end
   end 
 end
