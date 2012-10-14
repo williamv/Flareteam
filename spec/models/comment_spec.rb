@@ -49,7 +49,7 @@ describe Comment do
     end
 
     it "returns the authors full name" do
-      comment.author.should == comment.user.full_name
+      comment.user.to_s.should == comment.user.full_name
     end
   end
 end
