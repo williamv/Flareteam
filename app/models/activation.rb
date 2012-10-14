@@ -4,6 +4,7 @@ class Activation < ActiveRecord::Base
   validate :title, :description, :location, :organization, presence: true
 
   attr_accessible :description, :location, :title
+  default_scope order(created_at: "DESC")
 
   def to_s
     title
