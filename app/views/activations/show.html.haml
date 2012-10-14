@@ -18,7 +18,9 @@
           = link_to "Delete Activation", @activation, 
             method: :delete, 
             data: { confirm: "Are you sure?" }
-    = simple_format(@activation.description, class: "lead")
+    .description.row
+      .span6
+        = simple_format(@activation.description, class: "lead")
 
 .row
   .span8
@@ -27,8 +29,7 @@
         .span6
           %h3= comment.teaser
           %blockquote
-            %p
-              = simple_format(comment.body)
+            = simple_format(comment.body)
             %small= authorship_details_for(comment)
           %small.pull-right= link_to "Edit", 
             edit_activation_comment_path(@activation, comment.id)
