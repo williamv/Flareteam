@@ -6,6 +6,6 @@ FactoryGirl.define do
     location { Faker::Address.city }
     description { Faker::Lorem.paragraph }
 
-    association :user
+    association :organization
   end
 end

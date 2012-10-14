@@ -6,7 +6,7 @@ describe Comment do
                                   organization: organization)}
 
   let(:activation) { FactoryGirl.create(:activation,
-                                        user: user) }
+                                        organization: organization) }
 
   let(:comment) { FactoryGirl.build(:comment, 
                                     activation: activation,

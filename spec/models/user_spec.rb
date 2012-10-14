@@ -18,10 +18,10 @@ describe User do
   describe "#peers" do
     let(:peer) { users(:jane) }
 
-    before { organization.users << peer }
+    before { organization.members << peer }
     
     it "returns the other users in the user's organization" do
-      user.peers.should match_array organization.users
+      user.peers.should match_array organization.members
     end
   end
 

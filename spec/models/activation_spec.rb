@@ -2,15 +2,16 @@ require 'spec_helper'
 
 describe Activation do
   let(:organization) { organizations(:acme) }
-  let(:other_organization) { organizations(:acme) }
-  let(:poster) { FactoryGirl.create(:user, organization: organization) }
-  let(:subscriber) { FactoryGirl.create(:user, organization: organization) }
-  let(:non_subscriber) { FactoryGirl.create(:user, organization: organization) }
+  let(:poster) { FactoryGirl.create(:user, 
+                                    organization: organization) }
+  let(:subscriber) { FactoryGirl.create(:user, 
+                                        organization: organization) }
+  let(:non_subscriber) { FactoryGirl.create(:user, 
+                                            organization: organization) }
   let(:non_member) { FactoryGirl.create(:user) }
 
-  let(:members) { [poster, non_subscriber, subscriber] }
   let(:activation) { FactoryGirl.create(:activation,
-                                        user: poster)}
+                                        organization: organization)}
 
   describe "to_s" do
     it "returns the title" do
@@ -20,6 +21,7 @@ describe Activation do
   
   describe "#subscribers" do
     before do
+      non_member.profile.update_attributes(wants_email_notifications: true)
       poster.profile.update_attributes(wants_email_notifications: true)
       subscriber.profile.update_attributes(wants_email_notifications: true)
       non_subscriber.profile.update_attributes(wants_email_notifications: false)

@@ -2,7 +2,7 @@ class ActivationsController < ApplicationController
   # GET /activations
   # GET /activations.json
   def index
-    @activations = Activation.all
+    @activations = current_user.activations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class ActivationsController < ApplicationController
   # GET /activations/1
   # GET /activations/1.json
   def show
-    @activation = Activation.find(params[:id])
+    @activation = current_user.activations.find(params[:id])
     @comment = Comment.new
 
     respond_to do |format|
@@ -25,7 +25,7 @@ class ActivationsController < ApplicationController
   # GET /activations/new
   # GET /activations/new.json
   def new
-    @activation = Activation.new
+    @activation = current_user.activations.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,7 +35,7 @@ class ActivationsController < ApplicationController
 
   # GET /activations/1/edit
   def edit
-    @activation = Activation.find(params[:id])
+    @activation = current_user.activations.find(params[:id])
   end
 
   # POST /activations

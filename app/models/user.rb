@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :organization
-  has_many :activations
+  has_many :activations, through: :organization
   has_many :comments
   has_one :profile
 
@@ -19,11 +19,13 @@ class User < ActiveRecord::Base
   scope :wanting_email_notifications, 
     joins(:profile).where("wants_email_notifications = ?", true)
 
+  delegate :activations, to: :organization
+
   def full_name
     [first_name, last_name].join(" ")
   end
 
   def peers
-    organization.users
+    organization.members
   end
 end

@@ -25,13 +25,15 @@ describe "Activations" do
   end
 
   context "with an activation" do
-    let!(:activation) { FactoryGirl.create(:activation) }
-    before { Activation.count.should == 1 }
+    let!(:activation) { FactoryGirl.create(:activation,
+                                           organization: user.organization) }
+    let!(:other_activation) { FactoryGirl.create(:activation) }
 
     describe "viewing the activation" do
       it "shows the activation" do
         visit activations_url
         page.should have_content activation.title
+        page.should_not have_content other_activation.title
 
         click_link activation.title
         page.should have_content activation.title

@@ -1,7 +1,7 @@
 class Activation < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :organization
   has_many :comments
-  validate :title, :description, :location, presence: true
+  validate :title, :description, :location, :organization, presence: true
 
   attr_accessible :description, :location, :title
 
@@ -10,6 +10,6 @@ class Activation < ActiveRecord::Base
   end
 
   def subscribers
-    user.peers.wanting_email_notifications
+    organization.members.wanting_email_notifications
   end
 end

@@ -7,7 +7,7 @@ describe ActivationMailer do
     let(:recipients) { [commenter, poster] }
 
     let(:activation) { FactoryGirl.create(:activation,
-                                         user: poster) }
+                                         organization: poster.organization) }
 
     let(:comment) { FactoryGirl.build(:comment, 
                                        title: 'Blizzard',
