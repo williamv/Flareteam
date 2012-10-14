@@ -5,6 +5,7 @@
       %small 
         = @activation.location
         = l(@activation.created_at)
+  .span8
     .btn-group.pull-right
       %a.btn.dropdown-toggle{href: "#", data: {toggle: "dropdown"}} 
         Actions
@@ -17,7 +18,6 @@
           = link_to "Delete Activation", @activation, 
             method: :delete, 
             data: { confirm: "Are you sure?" }
-  .span8
     %p.lead= @activation.description
 
 .row
