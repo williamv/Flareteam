@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
 
   delegate :activations, to: :organization
 
+  def to_s
+    full_name.presence || email
+  end
+
   def full_name
     [first_name, last_name].join(" ")
   end

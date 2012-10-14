@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
   after_save :notify_subscribers
 
   def author
-    user.full_name
+    user
   end
 
   def teaser(teaser_length = 15)

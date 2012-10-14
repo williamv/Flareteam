@@ -9,6 +9,21 @@ describe User do
     user.profile.should_not be_nil
   end
 
+  describe "#to_s" do
+    context "with a name" do
+      it "returns the user's full name" do
+        user.to_s.should == "#{user.first_name} #{user.last_name}"
+      end
+    end
+
+    context "without a name" do
+      before { user.update_attributes(first_name: nil, last_name: nil) }
+      it "returns the user's email address" do
+        user.to_s.should == user.email
+      end
+    end
+  end
+
   describe "#full_name" do
     it "return the joined first and last names" do
       user.full_name.should == "#{user.first_name} #{user.last_name}"
