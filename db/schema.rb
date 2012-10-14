@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014021034) do
+ActiveRecord::Schema.define(:version => 20121014144230) do
 
   create_table "activations", :force => true do |t|
     t.string   "title",           :null => false
@@ -56,14 +56,14 @@ ActiveRecord::Schema.define(:version => 20121014021034) do
 
   create_table "users", :force => true do |t|
     t.integer  "organization_id",                        :null => false
-    t.string   "first_name",                             :null => false
-    t.string   "last_name",                              :null => false
-    t.string   "emergency_role",                         :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "emergency_role"
     t.string   "street_address"
     t.string   "city"
     t.string   "state"
-    t.string   "mobile_phone_number",                    :null => false
-    t.string   "landline_phone_number",                  :null => false
+    t.string   "mobile_phone_number"
+    t.string   "landline_phone_number"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"

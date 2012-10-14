@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :organization, :email, :first_name, :last_name, :emergency_role, 
-    :mobile_phone_number, :landline_phone_number, presence: true
+  validates :organization, :email, presence: true
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
     :first_name, :last_name, :emergency_role, :street_address, :city, :state, 
