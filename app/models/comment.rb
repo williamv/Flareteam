@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
   validates :user, :activation, presence: true
 
   attr_accessible :body, :title, :user_id, :activation_id
-  default_scope order(created_at: "DESC")
+  default_scope order("created_at DESC")
 
   alias_attribute :posted_at, :created_at
   after_save :notify_subscribers
