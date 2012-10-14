@@ -26,6 +26,6 @@ describe "Registration" do
     fill_in "State", with: "IL"
 
     click_on "Sign up"
-    page.should have_content "Sign out"
+    click_on "Sign out"
   end
 end
