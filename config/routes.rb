@@ -6,7 +6,7 @@ Flareteam::Application.routes.draw do
 
   resources :organizations
 
-  devise_for :users, controllers: { sessions: "sessions" }
+  devise_for :users, controllers: { sessions: "sessions", registrations: "registrations" }
   resource :profile
 
   root :to => 'activations#index'

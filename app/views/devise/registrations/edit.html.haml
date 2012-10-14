@@ -6,6 +6,15 @@
       = f.input :email, required: true, autofocus: true
       = f.input :password, :autocomplete => "off", required: false
       = f.input :password_confirmation, required: false
-      = f.input :current_password, required: true
+      %hr
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :emergency_role, 
+        label: "Role during emergencies"
+      = f.input :mobile_phone_number
+      = f.input :landline_phone_number
+      = f.input :street_address
+      = f.input :city
+      = f.input :state
     .form-actions
       = f.button :submit, "Update", class: "btn btn-primary"
