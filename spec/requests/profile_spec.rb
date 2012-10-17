@@ -27,4 +27,14 @@ describe "Profile page" do
       notifications_checkbox.should_not be_checked
     end
   end
+
+  it "invites a user" do
+    visit edit_profile_url
+    page.should have_content "Invite people"
+    click_on "Invite people"
+    
+    fill_in "Email", with: "user@example.com"
+    click_on "Send an invitation"
+    page.should have_content "An invitation email has been sent"
+  end
 end

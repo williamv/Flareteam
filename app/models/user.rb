@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_one :profile
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, 
+    :rememberable, :trackable, :validatable, :invitable
 
   validates :organization, :email, presence: true
 
