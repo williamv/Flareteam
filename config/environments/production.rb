@@ -1,5 +1,5 @@
 Flareteam::Application.configure do
-  config.action_mailer.default_url_options = { host: "flareteam.com" }
+  config.action_mailer.default_url_options = { host: "flareteam.herokuapp.com" }
   config.cache_classes = true
 
   config.consider_all_requests_local       = false
