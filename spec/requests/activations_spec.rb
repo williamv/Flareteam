@@ -70,7 +70,7 @@ describe "Activations" do
       let(:comment_title) { Faker::Lorem.sentence}
       let(:comment_text) { Faker::Lorem.paragraph }
 
-      it "adds a comment to the activation" do
+      it "adds a comment and a file to the activation" do
         visit activation_url(activation)
         fill_in "comment_title", with: comment_title
         fill_in "comment_body", with: comment_text

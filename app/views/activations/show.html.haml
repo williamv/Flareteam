@@ -23,24 +23,22 @@
         = simple_format(@activation.description, class: "lead")
 
 .row
-  .span8
-    - @activation.comments.each do |comment|
-      .comment.row
-        .span6
-          %h3= comment.teaser
-          %blockquote
-            = simple_format(comment.body)
-            %small= authorship_details_for(comment)
-          %small.pull-right= link_to "Edit", 
-            edit_activation_comment_path(@activation, comment.id)
-
+  .span6
     = simple_form_for [@activation, @comment] do |f|
       %legend Post an Update
       .form-inputs
-        = f.input :title, label: false, placeholder: "Title"
+        = f.input :title, 
+          label: false, 
+          input_html: { class: "input-xxlarge" },
+          placeholder: "Title"
         = f.input :body, 
           label: false, 
           placeholder: "Message", 
-          input_html: { class: "input-xxlarge", rows: 10 }
+          input_html: { class: "input-xxlarge", rows: 5 }
+        = f.input :attachment,
+          label: false
+
       .form-actions
         = f.button :submit, "Post Update", class: "btn btn-primary pull-right"
+    - @activation.comments.each do |comment|
+      = render comment

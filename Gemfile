@@ -8,6 +8,8 @@ gem "devise"
 gem "simple_form"
 gem "twitter-bootstrap-rails"
 gem "country_select"
+gem "fog"
+gem "carrierwave"
 
 group :assets do
   gem "sass-rails",   "~> 3.2.3"
