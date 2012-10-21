@@ -1,6 +1,6 @@
 class Activation < ActiveRecord::Base
   belongs_to :organization
-  has_many :comments
+  has_many :comments, dependent: :destroy
   validate :title, :description, :location, :organization, presence: true
 
   attr_accessible :description, :location, :title
