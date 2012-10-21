@@ -5,6 +5,7 @@ gem "rails", "3.2.8"
 gem "haml-rails"
 
 gem "devise"
+gem "devise_invitable"
 gem "simple_form"
 gem "twitter-bootstrap-rails"
 gem "country_select"

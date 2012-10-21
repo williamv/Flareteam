@@ -1,11 +1,13 @@
 development:
   adapter: postgresql
   database: flareteam_development
+  host: localhost
   pool: 5
   timeout: 5000
 
 test:
   adapter: postgresql
   database: flareteam_test
+  host: localhost
   pool: 5
   timeout: 5000
