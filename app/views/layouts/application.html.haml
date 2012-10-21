@@ -20,6 +20,7 @@
       .content
         .row
           .span12
+            = render "shared/messages", locals: { flash: flash, notice: notice }
             = yield
     
     %footer.footer
