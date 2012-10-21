@@ -1,6 +1,4 @@
 class ActivationsController < ApplicationController
-  # GET /activations
-  # GET /activations.json
   def index
     @activations = current_user.activations
 
@@ -10,8 +8,6 @@ class ActivationsController < ApplicationController
     end
   end
 
-  # GET /activations/1
-  # GET /activations/1.json
   def show
     @activation = current_user.activations.find(params[:id])
     @comment = Comment.new
@@ -22,8 +18,6 @@ class ActivationsController < ApplicationController
     end
   end
 
-  # GET /activations/new
-  # GET /activations/new.json
   def new
     @activation = current_user.activations.build
 
@@ -54,10 +48,8 @@ class ActivationsController < ApplicationController
     end
   end
 
-  # PUT /activations/1
-  # PUT /activations/1.json
   def update
-    @activation = Activation.find(params[:id])
+    @activation = current_user.activations.find(params[:id])
 
     respond_to do |format|
       if @activation.update_attributes(params[:activation])
@@ -70,10 +62,8 @@ class ActivationsController < ApplicationController
     end
   end
 
-  # DELETE /activations/1
-  # DELETE /activations/1.json
   def destroy
-    @activation = Activation.find(params[:id])
+    @activation = current_user.activations.find(params[:id])
     @activation.destroy
 
     respond_to do |format|
