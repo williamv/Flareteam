@@ -18,7 +18,9 @@ class User < ActiveRecord::Base
   scope :wanting_email_notifications, 
     joins(:profile).where("wants_email_notifications = ?", true)
 
-  delegate :activations, to: :organization
+  def activations
+    organization.activations
+  end
 
   def to_s
     full_name.presence || email
