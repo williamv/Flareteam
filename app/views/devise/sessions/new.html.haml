@@ -1,8 +1,13 @@
-%h2 Sign in
-= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :email, autofocus: true
-    = f.input :password
-  .form-actions
-    = f.button :submit, "Sign in"
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f|
+  - if flash.any?
+    .alert.alert-error= flash[:alert]
+  %fieldset#signin
+    %legend Sign in
+    .form-inputs
+      = f.input :email, 
+        autofocus: true, 
+        placeholder: "me@example.com"
+      = f.input :password
+    .form-actions
+      = f.button :submit, "Sign in", class: 'btn-large'
 = render "devise/shared/links"

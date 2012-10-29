@@ -1,0 +1,44 @@
+.row
+  .span8.page-header
+    %h1.pull-left
+      = @activation.title
+      %small 
+        = @activation.location
+        = l(@activation.created_at)
+  .span8
+    .btn-group.pull-right
+      %a.btn.dropdown-toggle{href: "#", data: {toggle: "dropdown"}} 
+        Actions
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          = link_to "Edit", edit_activation_path(@activation)
+        %li.divider
+        %li
+          = link_to "Delete Activation", @activation, 
+            method: :delete, 
+            data: { confirm: "Are you sure?" }
+    .description.row
+      .span6
+        = simple_format(@activation.description, class: "lead")
+
+.row
+  .span6
+    = simple_form_for [@activation, @comment] do |f|
+      %legend Post an Update
+      .form-inputs
+        = f.input :title, 
+          label: false, 
+          input_html: { class: "input-xxlarge" },
+          placeholder: "Title"
+        = f.input :body, 
+          label: false, 
+          placeholder: "Message", 
+          input_html: { class: "input-xxlarge", rows: 5 }
+        = f.input :attachment,
+          label: false
+
+      .form-actions
+        = f.button :submit, "Post Update", class: "btn btn-primary pull-right"
+    - @activation.comments.each do |comment|
+      = render comment

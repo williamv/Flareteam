@@ -1,0 +1,19 @@
+.row
+  .span8.page-header
+    %h1.pull-left 
+      Activations
+
+.row
+  .span8
+    .pull-right.actions
+      = link_to "New Activation", new_activation_path, class: "btn btn-info"
+    %ul.unstyled
+      - @activations.each do |activation|
+        .row
+          .span6
+            %li
+              %h2
+                = link_to activation.title, activation
+              %p.muted #{l(activation.created_at)} in #{activation.location}
+              %p= activation.description
+

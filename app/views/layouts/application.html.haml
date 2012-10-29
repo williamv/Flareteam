@@ -15,21 +15,17 @@
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
 
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.brand(href="#") Flareteam
-          - if user_signed_in?
-            = link_to('Sign out', destroy_user_session_path, method: :delete)
-
+    = render "shared/navbar"
     .container
       .content
         .row
           .span12
+            = render "shared/messages", locals: { flash: flash, notice: notice }
             = yield
     
-      %footer
-        %p &copy; Flareteam 2012
+    %footer.footer
+      .container
+        %p.pull-right &copy; Flareteam 2012
     /
       Javascripts
       \==================================================

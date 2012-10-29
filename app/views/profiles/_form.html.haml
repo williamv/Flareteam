@@ -1,0 +1,11 @@
+= simple_form_for(@profile) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :user_id
+    = f.input :wants_email_notifications,
+      label: "Email me with activation updates.",
+      wrapper: :checkbox
+
+  .form-actions
+    = f.button :submit

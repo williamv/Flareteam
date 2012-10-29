@@ -1,0 +1,13 @@
+= simple_form_for @profile do |f|
+  %fieldset
+    %legend Profile Settings
+    .form-inputs
+      - if flash[:notice]
+        .alert= flash[:notice]
+      = f.error_notification
+      = f.input :wants_email_notifications,
+        label: "Email me with activation updates.",
+        wrapper: :checkbox
+    .form-actions
+      = f.button :submit, class: 'btn btn-primary'
+= link_to "Invite people", new_user_invitation_path, class: "btn"
