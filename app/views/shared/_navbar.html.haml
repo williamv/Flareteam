@@ -3,5 +3,6 @@
     .container
       = link_to "Flareteam", root_url, class: "brand"
       %ul.nav.pull-right
+        %li= help_link
         - if user_signed_in?
           = render "shared/account_dropdown"

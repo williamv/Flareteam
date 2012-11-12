@@ -4,18 +4,18 @@ class User < ActiveRecord::Base
   has_many :comments
   has_one :profile
 
-  devise :database_authenticatable, :registerable, :recoverable, 
+  devise :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, :validatable, :invitable
 
   validates :organization, :email, presence: true
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, 
-    :first_name, :last_name, :emergency_role, :street_address, :city, :state, 
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+    :first_name, :last_name, :emergency_role, :street_address, :city, :state,
     :country, :mobile_phone_number, :landline_phone_number, :organization_id
 
   after_create :create_profile
 
-  scope :wanting_email_notifications, 
+  scope :wanting_email_notifications,
     joins(:profile).where("wants_email_notifications = ?", true)
 
   def activations
