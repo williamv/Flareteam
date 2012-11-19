@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :organization
-  has_many :activations, through: :organization
+  has_many :activations, primary_key: :organization_id,
+                         foreign_key: :organization_id
   has_many :comments
   has_one :profile
 
@@ -17,10 +18,6 @@ class User < ActiveRecord::Base
 
   scope :wanting_email_notifications,
     joins(:profile).where("wants_email_notifications = ?", true)
-
-  def activations
-    organization.activations
-  end
 
   def to_s
     full_name.presence || email

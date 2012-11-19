@@ -1,5 +1,5 @@
 class Activation < ActiveRecord::Base
-  belongs_to :organization
+  belongs_to :organization, inverse_of: :activations
   has_many :comments, dependent: :destroy
   validate :title, :description, :location, :organization, presence: true
 
