@@ -11,6 +11,7 @@ gem "twitter-bootstrap-rails"
 gem "country_select"
 gem "fog"
 gem "carrierwave"
+gem "thin"
 
 group :assets do
   gem "sass-rails",   "~> 3.2.3"
