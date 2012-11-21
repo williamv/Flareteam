@@ -24,6 +24,7 @@ group :development, :test do
   gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'letter_opener'
   gem 'pry'
   gem 'rspec-rails'
   gem 'sqlite3'
