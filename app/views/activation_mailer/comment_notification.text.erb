@@ -1,0 +1,3 @@
+<%= @comment.author %> posted about <%= @comment.activation %> at <%= posted_at @comment, :full %> - <%= @comment.body %>
+- <%= activation_url(@comment.activation) %>.
+To unsubscribe from notifications, go to <%= @unsubscribe_url %>.

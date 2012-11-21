@@ -1,5 +1,6 @@
 en:
-  time: 
+  time:
     formats:
       default: "%m/%d/%Y"
       long: "%B %d, %Y %H:%M:%S"
+      full: "%B %d, %Y %H:%M:%S %Z"

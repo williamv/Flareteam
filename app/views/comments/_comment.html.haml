@@ -6,5 +6,5 @@
       - if comment.attachment.present?
         = link_to comment.attachment_identifier, comment.attachment.url
       %small= authorship_details_for(comment)
-    %small.pull-right= link_to "Edit", 
+    %small.pull-right= link_to "Edit",
       edit_activation_comment_path(@activation, comment.id)

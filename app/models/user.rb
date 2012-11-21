@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   after_create :create_profile
 
+  delegate :time_zone, to: :profile
+
   scope :wanting_email_notifications,
     joins(:profile).where("wants_email_notifications = ?", true)
 
