@@ -23,3 +23,5 @@ module Flareteam
     config.assets.version = '1.0'
   end
 end
+
+Rails.configuration.time_zone = ActiveSupport::TimeZone['Eastern Time (US & Canada)']

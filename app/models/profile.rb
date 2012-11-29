@@ -5,6 +5,6 @@ class Profile < ActiveRecord::Base
     :time_zone
 
   def time_zone
-    super.presence || ActiveSupport::TimeZone['EST']
+    super.presence || Rails.configuration.time_zone
   end
 end
