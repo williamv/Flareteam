@@ -8,13 +8,13 @@ describe Comment do
   let(:activation) { FactoryGirl.create(:activation,
                                         organization: organization) }
 
-  let(:comment) { FactoryGirl.build(:comment, 
+  let(:comment) { FactoryGirl.build(:comment,
                                     activation: activation,
                                     user: user) }
 
   before { ActivationMailer.stub(:comment_notification) }
 
-  describe "after_save" do
+  describe "after_create" do
     it "calls notify_subscribers" do
       comment.should_receive(:notify_subscribers).once
       comment.save!

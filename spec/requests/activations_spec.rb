@@ -101,7 +101,7 @@ describe 'Activations' do
         page.should have_content '*redacted*'
 
         mail_queue = ActionMailer::Base.deliveries
-        mail_queue.size.should == 1
+        mail_queue.size.should == 0
       end
     end
   end

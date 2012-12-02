@@ -8,7 +8,7 @@ class Comment < ActiveRecord::Base
   default_scope order("created_at DESC")
 
   alias_attribute :posted_at, :created_at
-  after_save :notify_subscribers
+  after_create :notify_subscribers
 
   mount_uploader :attachment, AttachmentUploader
 
