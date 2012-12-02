@@ -2,7 +2,11 @@
 
 class AttachmentUploader < CarrierWave::Uploader::Base
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    File.join(
+      Rails.configuration.upload_dir,
+      model.class.to_s.underscore,
+      mounted_as.to_s,
+      model.id.to_s)
   end
 
   def extension_white_list

@@ -2,14 +2,14 @@ require 'spec_helper'
 include Warden::Test::Helpers
 
 describe 'Activations' do
+  let(:activation_title) { Faker::Company.bs }
   let(:user) { FactoryGirl.create(:user) }
   before do
+    ActionMailer::Base.deliveries.clear
     login_as user, scope: :user
   end
 
   describe 'creating an activation' do
-    let(:activation_title) { Faker::Company.bs }
-
     it 'creates an activation' do
       visit activations_url
 
@@ -26,7 +26,8 @@ describe 'Activations' do
 
   context 'with an activation' do
     let!(:activation) { FactoryGirl.create(:activation,
-                                           organization: user.organization) }
+                                           organization: user.organization,
+                                           title: activation_title) }
     let!(:other_activation) { FactoryGirl.create(:activation) }
 
     describe 'viewing the activation' do
@@ -74,11 +75,20 @@ describe 'Activations' do
         visit activation_url(activation)
         fill_in 'comment_title', with: comment_title
         fill_in 'comment_body', with: comment_text
+        page.attach_file('comment_attachment', Rails.root.join('spec/fixtures/upload.txt'))
         click_on 'Post Update'
 
         page.should have_content comment_title
         page.should have_content comment_text
         page.should have_content user.full_name
+
+        mail_queue = ActionMailer::Base.deliveries
+        mail_queue.size.should == 1
+        mail = mail_queue.first
+        mail.subject.should == "New comment on #{activation_title}"
+        mail.attachments.size.should == 1
+
+        ActionMailer::Base.deliveries.clear
 
         within '.comment' do
           click_on 'Edit'
@@ -89,6 +99,9 @@ describe 'Activations' do
         click_on 'Update'
 
         page.should have_content '*redacted*'
+
+        mail_queue = ActionMailer::Base.deliveries
+        mail_queue.size.should == 1
       end
     end
   end

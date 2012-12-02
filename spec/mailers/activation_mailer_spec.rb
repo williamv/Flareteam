@@ -45,5 +45,21 @@ describe ActivationMailer do
     it "includes the user's timezone" do
       email.body.should include('EST')
     end
+
+    context 'when there is an attachment' do
+      let(:comment) { FactoryGirl.build(:comment,
+                                        title: 'Blizzard',
+                                        user: poster,
+                                        activation: activation,
+                                        attachment: File.open(Rails.root.join('spec/fixtures/upload.txt'))) }
+
+      it 'includes the attachment' do
+        email.attachments.size.should == 1
+      end
+
+      it 'the attachment has the name from the original file' do
+        email.attachments.first.filename.should == 'upload.txt'
+      end
+    end
   end
 end

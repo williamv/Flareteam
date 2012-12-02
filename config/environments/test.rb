@@ -34,4 +34,7 @@ Flareteam::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Store uploads in a temporary directory
+  config.upload_dir = Dir.tmpdir
 end
