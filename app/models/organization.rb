@@ -9,7 +9,9 @@ class Organization < ActiveRecord::Base
   validates :name, :primary_contact_name, :primary_contact_phone,
     :emergency_role, presence: true
 
-  def to_s
-    name
+  before_destroy :destroyable?
+
+  def destroyable?
+    members.empty? && activations.empty?
   end
 end

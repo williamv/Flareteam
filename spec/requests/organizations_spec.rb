@@ -60,11 +60,7 @@ describe "Organizations" do
       it "destroys the organization" do
         visit organizations_url
 
-        Organization.count.times do
-          within(".organization") do
-            click_link "Destroy"
-          end
-        end
+        page.all(".organization a", text: "Destroy").each(&:click)
 
         page.should_not have_content organization.name
       end

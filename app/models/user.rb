@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   belongs_to :organization
-  has_many :activations, primary_key: :organization_id,
-                         foreign_key: :organization_id
+  has_many :activations,
+    primary_key: :organization_id,
+    foreign_key: :organization_id
   has_many :comments
   has_one :profile
 

@@ -2,7 +2,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+    @organizations = OrganizationDecorator.decorate Organization.all
 
     respond_to do |format|
       format.html # index.html.erb
