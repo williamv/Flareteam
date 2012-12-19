@@ -21,6 +21,13 @@ describe ActivationMailer do
     end
 
     let(:email) { ActivationMailer.comment_notification(recipients, comment).deliver }
+    let(:text_part) { email.text_part }
+    let(:html_part) { email.html_part }
+
+    it 'has a text part and an html part' do
+      email.text_part.should be_present
+      email.html_part.should be_present
+    end
 
     it "sends an email to all members of the organization" do
       email.bcc.should match_array([poster.email, commenter.email])
@@ -31,19 +38,19 @@ describe ActivationMailer do
     end
 
     it "has a link to the comment in the body" do
-      email.body.should include(activation_url(activation))
+      text_part.body.should include(activation_url(activation))
     end
 
     it "has a the activation title name" do
-      email.body.should include(activation.title)
+      text_part.body.should include(activation.title)
     end
 
     it "has a link to the user's profile" do
-      email.body.should include(edit_profile_url)
+      text_part.body.should include(edit_profile_url)
     end
 
     it "includes the user's timezone" do
-      email.body.should include('EST')
+      text_part.body.should include('EST')
     end
 
     context 'when there is an attachment' do

@@ -7,7 +7,7 @@ class ActivationMailer < ActionMailer::Base
     @unsubscribe_url = edit_profile_url
     include_attachments(comment)
     mail(bcc: users.map(&:email),
-         subject: "New comment on #{comment.activation}")
+         subject: "Update: #{comment.activation} - #{comment.title} at #{comment.created_at.to_s(:short)}")
   end
 
 private

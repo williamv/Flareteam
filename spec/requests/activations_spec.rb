@@ -85,7 +85,7 @@ describe 'Activations' do
         mail_queue = ActionMailer::Base.deliveries
         mail_queue.size.should == 1
         mail = mail_queue.first
-        mail.subject.should == "New comment on #{activation_title}"
+        mail.subject.should include "Update: #{activation.title} - #{comment_title}"
         mail.attachments.size.should == 1
 
         ActionMailer::Base.deliveries.clear

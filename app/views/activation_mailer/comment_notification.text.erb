@@ -1,3 +1,11 @@
-<%= @comment.author %> posted about <%= @comment.activation %> at <%= posted_at @comment, :full %> - <%= @comment.body %>
-- <%= activation_url(@comment.activation) %>.
+# Flareteam Activation Update
+## Activation: <%= @comment.activation %>
+
+<%= @comment.title %>
+<%= @comment.body %>
+
+Posted <%= posted_at(@comment, :full) %> by <%= @comment.author %>.
+
+To view as a web page: <%= activation_url(@comment.activation) %>.
+
 To unsubscribe from notifications, go to <%= @unsubscribe_url %>.
