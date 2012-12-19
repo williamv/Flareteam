@@ -13,14 +13,14 @@
           Activation:
           = link_to @comment.activation, activation_url(@comment.activation), style: "color: #0088cc;"
     %tr
-      %td{syle: "background: #fff; padding: 1.4em;"}
-        %div{style: "padding: 1.4em;"}
+      %td{syle: "background: #fff;"}
+        %div{style: "padding: 24px;"}
           %h3{style: "font-family: 'Helvetica'; font-size: 21px; color: #333; border-bottom: 1px solid #E5E5E5;"}= @comment.title
           %pre{style: "font-family: 'Helvetica'; font-size: 16px; color: #333; line-height: 22px;"}= @comment.body
           %p{style: "font-family: 'Helvetica'; font-size: 12px; color: #999;"} Posted #{posted_at(@comment, :full)} by #{@comment.author}.
     %tr
       %td{style: "background: #eeb;"}
-        %div{style: "padding: 0 1.4em;"}
+        %div{style: "padding: 0 24px;"}
           %p{style: "font-family: 'Helvetica'; font-size: 16px; line-height: 22px;"}
             You have received this email because you chose to be notified about updates
             for the
