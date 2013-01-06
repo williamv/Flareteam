@@ -10,6 +10,9 @@ FactoryGirl.define do
     mobile_phone_number { Faker::PhoneNumber.phone_number }
     landline_phone_number { Faker::PhoneNumber.phone_number }
 
+  end
+
+  trait :with_organization do
     association :organization
   end
 end

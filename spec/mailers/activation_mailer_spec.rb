@@ -2,8 +2,8 @@ require "spec_helper"
 
 describe ActivationMailer do
   describe ".comment_notification" do
-    let(:poster) { FactoryGirl.build(:user) }
-    let(:commenter) { FactoryGirl.build(:user) }
+    let(:poster) { FactoryGirl.build(:user, :with_organization) }
+    let(:commenter) { FactoryGirl.build(:user, :with_organization) }
     let(:recipients) { [commenter, poster] }
 
     let(:activation) { FactoryGirl.create(:activation,

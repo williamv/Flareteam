@@ -41,8 +41,8 @@ describe User do
   end
 
   describe ".wanting_email_notifications" do
-    let(:user_without_email) { FactoryGirl.create(:user) }
-    let(:another_user_without_email) { FactoryGirl.create(:user) }
+    let(:user_without_email) { FactoryGirl.create(:user, :with_organization) }
+    let(:another_user_without_email) { FactoryGirl.create(:user, :with_organization) }
     before do
       user.profile.update_attributes(wants_email_notifications: true)
       user_without_email.profile.update_attributes(wants_email_notifications: false)

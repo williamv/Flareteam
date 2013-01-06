@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :comment do
     body { Faker::Lorem.paragraph }
-    association :user
     association :activation
   end
 end

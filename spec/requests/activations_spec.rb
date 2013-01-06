@@ -3,7 +3,7 @@ include Warden::Test::Helpers
 
 describe 'Activations' do
   let(:activation_title) { Faker::Company.bs }
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:user, :with_organization) }
   before do
     ActionMailer::Base.deliveries.clear
     login_as user, scope: :user

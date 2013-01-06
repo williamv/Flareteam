@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe Activation do
   let(:organization) { organizations(:acme) }
-  let(:poster) { FactoryGirl.create(:user, 
+  let(:poster) { FactoryGirl.create(:user,
                                     organization: organization) }
-  let(:subscriber) { FactoryGirl.create(:user, 
+  let(:subscriber) { FactoryGirl.create(:user,
                                         organization: organization) }
-  let(:non_subscriber) { FactoryGirl.create(:user, 
+  let(:non_subscriber) { FactoryGirl.create(:user,
                                             organization: organization) }
-  let(:non_member) { FactoryGirl.create(:user) }
+  let(:non_member) { FactoryGirl.create(:user, :with_organization) }
 
   let(:activation) { FactoryGirl.create(:activation,
                                         organization: organization)}

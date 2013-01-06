@@ -2,7 +2,7 @@ require "spec_helper"
 include Warden::Test::Helpers
 
 describe "Profile page" do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:user, :with_organization) }
   before do
     login_as user, scope: :user
   end
