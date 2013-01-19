@@ -29,6 +29,7 @@ group :development, :test do
   gem 'ffaker'
   gem 'letter_opener'
   gem 'pry'
+  gem 'quiet_assets'
   gem 'rspec-rails'
   gem 'sqlite3'
 end
