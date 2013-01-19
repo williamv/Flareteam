@@ -24,6 +24,7 @@ end
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'capybara-screenshot'
   gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'ffaker'
@@ -33,4 +34,3 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
 end
-
