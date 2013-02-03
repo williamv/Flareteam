@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require jquery.ba-bbq.min
 //= require twitter/bootstrap
-//= require_tree .
+//= require clientBehaviors
+//= require helpMailer
+//= require attachBehaviors

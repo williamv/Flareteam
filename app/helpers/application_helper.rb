@@ -18,6 +18,6 @@ Operating system: Enter your operating system and version.
 
 Thanks.
     EOF
-    mail_to('help@flareteam.com', 'Help', subject: 'Flareteam, can you help me with a problem', body: body, id: 'help')
+    mail_to('help@flareteam.com', 'Help', subject: 'Flareteam, can you help me with a problem', body: body, data: {'client-behavior' => 'help_mailer'})
   end
 end

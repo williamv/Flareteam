@@ -7,8 +7,8 @@ describe ApplicationHelper do
       helper.stub(:current_organization)
     end
 
-    it 'contains an id' do
-      helper.help_link.should have_css('#help')
+    it 'specifies a client behavior' do
+      helper.help_link.should have_css('*[data-client-behavior=help_mailer]')
     end
 
     it 'gets the current user and organization' do

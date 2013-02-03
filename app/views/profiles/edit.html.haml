@@ -1,12 +1,47 @@
-= simple_form_for @profile do |f|
-  %fieldset
-    %legend Profile Settings
-    .form-inputs
-      = f.error_notification
-      = f.input :wants_email_notifications,
-        label: "Email me with activation updates.",
-        wrapper: :checkbox
-      = f.input :time_zone
-    .form-actions
-      = f.button :submit, class: 'btn btn-primary'
-= link_to "Invite people", new_user_invitation_path, class: "btn"
+.row
+  .span3
+    %ul.nav.nav-list.affix{data: {'client-behavior' => 'affix'}}
+      %li.active
+        %a{href: '#profile'}
+          %i.icon-chevron-right
+          Profile
+      %li
+        %a{href: '#settings'}
+          %i.icon-chevron-right
+          Settings
+
+  .span8
+    %section#profile
+      .page-header
+        %h1 Profile
+      = simple_form_for(@user, url: registration_path(@user)) do |f|
+        = f.error_notification
+        %fieldset.form-horizontal
+          .form-inputs
+            = f.input :email, required: true, autofocus: true
+            = f.input :password, :autocomplete => 'off', required: false
+            = f.input :password_confirmation, required: false
+            %hr
+            = f.input :first_name
+            = f.input :last_name
+            = f.input :emergency_role, label: 'Role during emergencies'
+            = f.input :mobile_phone_number
+            = f.input :landline_phone_number
+            = f.input :street_address
+            = f.input :city
+            = f.input :state
+          .form-actions
+            = f.button :submit, 'Update', class: 'btn btn-primary'
+
+    %section#settings
+      .page-head
+        %h1 Settings
+      = simple_form_for @profile do |f|
+        = f.error_notification
+        %fieldset.form-horizontal
+          .form-inputs
+            = f.input :wants_email_notifications,
+              label: 'Email me with activation updates.', wrapper: :checkbox
+            = f.input :time_zone
+          .form-actions
+            = f.button :submit, class: 'btn btn-primary'

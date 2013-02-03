@@ -1,0 +1,5 @@
+%tr
+  %td= organization_invitation_request.user.email
+  %td
+    = link_to 'Approve', organization_invitation_request_path(organization_invitation_request), method: :put
+    = link_to 'Reject', organization_invitation_request_path(organization_invitation_request), method: :delete

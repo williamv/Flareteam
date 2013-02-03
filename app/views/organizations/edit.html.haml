@@ -1,7 +1,49 @@
-%h1 Editing organization
+.row
+  .span3
+    %ul.nav.nav-list.affix{data: {'client-behavior' => 'affix'}}
+      %li.active
+        %a{href: '#organization'}
+          %i.icon-chevron-right
+          Organization
+      %li
+        %a{href: '#invite'}
+          %i.icon-chevron-right
+          Invite
+      %li
+        %a{href: '#invitation-requests'}
+          %i.icon-chevron-right
+          Invitation requests
+          - if @notifications > 0
+            %span.badge.badge-success= @notifications
 
-= render 'form'
+  .span8
+    %section#organization
+      .page-header
+        %h1 Organization
+        = render 'form'
 
-= link_to 'Show', @organization
-\|
-= link_to 'Back', organizations_path
+    %section#invite
+      .page-header
+        %h1 Invite
+        = simple_form_for(@user, as: :user, url: invitation_path(@user)) do |f|
+          = f.error_notification
+          %fieldset.form-horizontal
+            .form-inputs
+              = f.input :email
+            .form-actions
+              = f.button :submit, 'Invite', class: 'btn btn-primary'
+
+    %section#invitation-requests
+      .page-header
+        %h1 Invitation requests
+        - if @organization.organization_invitation_requests.any?
+          You have #{@notifications} pending invitation #{'request'.pluralize(@notifications)}.
+          %table.table
+            %thead
+              %tr
+                %th Email
+                %th
+            %tbody
+              = render @organization.organization_invitation_requests
+        - else
+          %p There are no pending invitation requests.

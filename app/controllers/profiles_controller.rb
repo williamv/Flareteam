@@ -2,7 +2,9 @@ class ProfilesController < ApplicationController
   respond_to :html
 
   def edit
+    @user = current_user
     @profile = current_user.profile
+    @organization = current_organization
   end
 
   def update

@@ -1,22 +1,22 @@
 = simple_form_for(@organization) do |f|
   = f.error_notification
+  %fieldset.form-horizontal
+    .form-inputs
+      = f.input :name
+      = f.input :street_address
+      = f.input :city
+      = f.input :state
+      = f.input :zip_code
+      = f.input :phone
+      = f.input :primary_contact_name
+      = f.input :primary_contact_phone
+      = f.input :primary_contact_email
+      = f.input :employee_count_range, 
+        collection: ["1-10"], 
+        label: "Number of employees"
+      = f.input :emergency_role, 
+        label: "Role during emergencies",
+        input_html: { class: "input-xxlarge", rows: "8" }
 
-  .form-inputs
-    = f.input :name
-    = f.input :street_address
-    = f.input :city
-    = f.input :state
-    = f.input :zip_code
-    = f.input :phone
-    = f.input :primary_contact_name
-    = f.input :primary_contact_phone
-    = f.input :primary_contact_email
-    = f.input :employee_count_range, 
-      collection: ["1-10"], 
-      label: "Number of employees"
-    = f.input :emergency_role, 
-      label: "Role during emergencies",
-      input_html: { class: "input-xxlarge", rows: "8" }
-
-  .form-actions
-    = f.button :submit
+    .form-actions
+      = f.button :submit, class: 'btn btn-primary'

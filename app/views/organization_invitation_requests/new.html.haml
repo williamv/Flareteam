@@ -1,0 +1,13 @@
+.span12
+  %section#invitation-request
+    .page-header
+      %h1 Invitation request
+      %p Enter the email of an organization member to request an invite below.
+      = simple_form_for @organization_invitation_request do |f|
+        = f.error_notification
+        %fieldset.form-horizontal
+          .form-inputs
+            = f.input :email
+            = f.error :base, class: 'error'
+          .form-actions
+            = f.button :submit, 'Request invite', class: 'btn btn-primary'

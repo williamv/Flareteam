@@ -5,11 +5,12 @@ class User < ActiveRecord::Base
     foreign_key: :organization_id
   has_many :comments
   has_one :profile
+  has_many :organization_invitation_requests, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, :validatable, :invitable
 
-  validates :organization, :email, presence: true
+  validates :email, presence: true
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :first_name, :last_name, :emergency_role, :street_address, :city, :state,
@@ -20,14 +21,14 @@ class User < ActiveRecord::Base
   delegate :time_zone, to: :profile
 
   scope :wanting_email_notifications,
-    joins(:profile).where("wants_email_notifications = ?", true)
+    joins(:profile).where('wants_email_notifications = ?', true)
 
   def to_s
     full_name.presence || email
   end
 
   def full_name
-    [first_name, last_name].join(" ")
+    [first_name, last_name].join(' ')
   end
 
   def peers

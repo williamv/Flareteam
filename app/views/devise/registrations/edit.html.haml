@@ -1,20 +1,48 @@
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
-  %fieldset
-    %legend Account
-    .form-inputs
-      = f.input :email, required: true, autofocus: true
-      = f.input :password, :autocomplete => "off", required: false
-      = f.input :password_confirmation, required: false
-      %hr
-      = f.input :first_name
-      = f.input :last_name
-      = f.input :emergency_role, 
-        label: "Role during emergencies"
-      = f.input :mobile_phone_number
-      = f.input :landline_phone_number
-      = f.input :street_address
-      = f.input :city
-      = f.input :state
-    .form-actions
-      = f.button :submit, "Update", class: "btn btn-primary"
+.row
+  .span3
+    %ul.nav.nav-list.affix{data: {'client-behavior' => 'affix'}}
+      %li.active
+        %a{href: '#profile'}
+          %i.icon-chevron-right
+          Profile
+      %li
+        %a{href: '#organizations'}
+          %i.icon-chevron-right
+          Organizations
+
+  .span8
+    %section#profile
+      .page-header
+        %h1 Profile
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = f.error_notification
+        %fieldset.form-horizontal
+          .form-inputs
+            = f.input :email, required: true, autofocus: true
+            = f.input :password, :autocomplete => 'off', required: false
+            = f.input :password_confirmation, required: false
+            %hr
+            = f.input :first_name
+            = f.input :last_name
+            = f.input :emergency_role, label: 'Role during emergencies'
+            = f.input :mobile_phone_number
+            = f.input :landline_phone_number
+            = f.input :street_address
+            = f.input :city
+            = f.input :state
+          .form-actions
+            = f.button :submit, 'Update', class: 'btn btn-primary'
+
+    %section#organizations
+      .page-header
+        %h1 Organizations
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = f.error_notification
+        %fieldset.form-horizontal
+          %ul
+            - if @organization
+              = render @organization
+            - else
+              You do not belong to any organizations.
+          .form-actions
+            = f.button :submit, 'Request an Invite', class: 'btn btn-primary'

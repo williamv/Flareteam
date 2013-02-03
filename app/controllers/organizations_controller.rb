@@ -34,6 +34,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1/edit
   def edit
+    @user = User.new
     @organization = Organization.find(params[:id])
   end
 

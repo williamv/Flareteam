@@ -1,36 +1,36 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @organization.name
-%p
-  %b Street address:
-  = @organization.street_address
-%p
-  %b City:
-  = @organization.city
-%p
-  %b State:
-  = @organization.state
-%p
-  %b Phone:
-  = @organization.phone
-%p
-  %b Primary contact name:
-  = @organization.primary_contact_name
-%p
-  %b Primary contact phone:
-  = @organization.primary_contact_phone
-%p
-  %b Primary contact email:
-  = @organization.primary_contact_email
-%p
-  %b Emergency role:
-  = @organization.emergency_role
-%p
-  %b Employee count range:
-  = @organization.employee_count_range
+.span8.page-header
+  %h1= @organization.name
+.span8
+  .btn-group.pull-right
+    = link_to 'Invite people', new_user_invitation_path, class: 'btn'
+    = link_to 'Edit', edit_organization_path(@organization), class: 'btn'
+  %p
+    %b Street address:
+    = @organization.street_address
+  %p
+    %b City:
+    = @organization.city
+  %p
+    %b State:
+    = @organization.state
+  %p
+    %b Phone:
+    = @organization.phone
+  %p
+    %b Primary contact name:
+    = @organization.primary_contact_name
+  %p
+    %b Primary contact phone:
+    = @organization.primary_contact_phone
+  %p
+    %b Primary contact email:
+    = @organization.primary_contact_email
+  %p
+    %b Emergency role:
+    = @organization.emergency_role
+  %p
+    %b Employee count range:
+    = @organization.employee_count_range
 
-= link_to 'Edit', edit_organization_path(@organization)
-\|
-= link_to 'Back', organizations_path
