@@ -1,68 +1,48 @@
 require 'spec_helper'
-include Warden::Test::Helpers
 
-describe 'Organizations' do
-  let(:user) { users(:eddie) }
-  before { login_as user, scope: :user }
+feature 'Organizations' do
+  let(:organization_name) { Faker::Company.name }
 
-  describe 'creating an organization' do
-    let(:organization_name) { Faker::Company.name }
-
-    it 'creates a new organization' do
-      visit new_organization_url
-      page.should have_content 'New organization'
-
-      fill_in 'Name', with: organization_name
-      fill_in 'Street address', with: Faker::Address.street_address
-      fill_in 'City', with: Faker::AddressUS.city
-      fill_in 'State', with: Faker::AddressUS.state_abbr
-      fill_in 'Zip code', with: Faker::AddressUS.zip_code
-      fill_in 'Phone', with: Faker::PhoneNumber.phone_number
-      fill_in 'Primary contact name', with: Faker::Name.name
-      fill_in 'Primary contact phone', with: Faker::PhoneNumber.phone_number
-      fill_in 'Primary contact email', with: Faker::Internet.email
-      fill_in 'Role during emergencies', with: Faker::Lorem.words(20)
-      select '1-10', from: 'Number of employees'
-
-      click_on 'Create Organization'
-      page.should have_content organization_name
-    end
+  background do
+    login_as admin, admin_password
   end
 
-  context 'with an organization' do
+  scenario 'Creating an organization' do
+    visit '/organizations'
+    click_link 'New Organization'
+    page.should have_content 'New organization'
+
+    fill_in_organization_details
+
+    click_on 'Create Organization'
+    page.should have_content organization_name
+  end
+
+  context 'An organization exists' do
     let!(:organization) { FactoryGirl.create(:organization) }
+    background do
+      visit '/organizations'
+    end
+    
+    scenario 'Viewing the organization' do
+      page.should have_content organization.name
 
-    describe 'viewing an organization' do
-      it 'shows the organization' do
-        visit organizations_url
-        page.should have_content organization.name
-
-        click_link organization.name
-        page.should have_content organization.name
-      end
+      click_link organization.name
+      page.should have_content organization.name
     end
 
-    describe 'editing an organization' do
-      it 'updates the organization' do
-        visit organization_url(organization)
-        page.should have_content organization.name
+    scenario 'Editing the organization' do
+      click_link organization.name
+      click_link 'Edit'
+      fill_in 'Name', with: 'A new organization name'
+      click_on 'Update Organization'
 
-        click_link 'Edit'
-        fill_in 'Name', with: 'A new organization name'
-        click_on 'Update Organization'
-
-        page.should have_content 'A new organization name'
-      end
+      page.should have_content 'A new organization name'
     end
 
-    describe 'destroying an organization' do
-      it 'destroys the organization' do
-        visit organizations_url
-
-        page.all('.organization a', text: 'Destroy').each(&:click)
-
-        page.should_not have_content organization.name
-      end
+    scenario 'Deleting the organization' do
+      page.all('.organization a', text: 'Destroy').each(&:click)
+      page.should_not have_content organization.name
     end
   end
 
@@ -72,17 +52,21 @@ describe 'Organizations' do
       FactoryGirl.create(
         :organization_invitation_request,
         requester: requester,
-        email: user.email,
-        organization: user.organization)
+        email: admin.email,
+        organization: admin.organization)
+    end
+    background do
+      visit '/organizations'
     end
 
     it 'should get a notification of an invitation request' do
-      visit root_url
       page.should have_css '.badge', text: '1'
       
-      click_link 'Organization'
+      within '.dropdown' do
+        click_link 'Organization'
+      end
       page.should have_content('You have 1 pending invitation request')
-      page.should have_content(user.email)
+      page.should have_content(admin.email)
     end
   end
 end

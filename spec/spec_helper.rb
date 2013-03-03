@@ -23,6 +23,9 @@ RSpec.configure do |config|
   end
   config.after(:each) { DatabaseCleaner.clean }
 
+
+  config.include(FeatureHelpers, type: :feature)
+
   Capybara.javascript_driver = :webkit
 end
 

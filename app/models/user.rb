@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
     primary_key: :organization_id,
     foreign_key: :organization_id
   has_many :comments
-  has_one :profile
+  has_one :profile, inverse_of: :user
   has_many :organization_invitation_requests, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :recoverable,
