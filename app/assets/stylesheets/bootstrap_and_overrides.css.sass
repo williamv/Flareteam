@@ -1,12 +1,17 @@
 @import twitter-bootstrap-static/bootstrap
 @import twitter-bootstrap-static/fontawesome
 
+// Add padding for flash notices
+body
+  padding-top: 60px
+
+// Remove padding from blockquotes that appear in activation updates
 blockquote
   border-left: none
   margin-left: none
 
-blockquote p
-  margin-bottom: 10px
+  p
+    margin-bottom: 10px
 
-  &:last-child
-    margin-bottom: 0
+    &:last-child
+      margin-bottom: 0
