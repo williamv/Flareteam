@@ -1,4 +1,4 @@
-class OrganizationDecorator < Draper::Base
+class OrganizationDecorator < Draper::Decorator
   def to_s
     model.name
   end
