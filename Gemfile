@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'carrierwave'
 gem 'country_select'
@@ -24,7 +25,6 @@ end
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller'
 end
 
 group :development, :test do
