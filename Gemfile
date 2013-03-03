@@ -28,8 +28,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'capybara-screenshot'
   gem 'capybara-webkit'
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'letter_opener'
