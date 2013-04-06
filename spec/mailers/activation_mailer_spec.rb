@@ -14,7 +14,10 @@ describe ActivationMailer do
                                        user: poster,
                                        activation: activation) }
 
-    before { comment.save! }
+    before do
+      poster.profile.time_zone = 'EST'
+      comment.save!
+    end
 
     it "enqueues a single email" do
       ActionMailer::Base.deliveries.count.should == 1

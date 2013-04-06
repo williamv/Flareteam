@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, inverse_of: :profile
   attr_accessible :user_id,
     :wants_email_notifications,
     :time_zone

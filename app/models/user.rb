@@ -16,12 +16,15 @@ class User < ActiveRecord::Base
     :first_name, :last_name, :emergency_role, :street_address, :city, :state,
     :country, :mobile_phone_number, :landline_phone_number, :organization_id
 
-  after_create :create_profile
-
+  after_initialize :add_profile
   delegate :time_zone, to: :profile
 
   scope :wanting_email_notifications,
     joins(:profile).where('wants_email_notifications = ?', true)
+
+  def add_profile
+    build_profile if profile.blank?
+  end
 
   def to_s
     full_name.presence || email
