@@ -1,6 +1,6 @@
 class ActivationMailer < ActionMailer::Base
   add_template_helper CommentsHelper
-  default from: ENV["GMAIL_SMTP_USERNAME"]
+  default from: ENV["GMAIL_SMTP_USERNAME"] || 'accounts@flareteam.com'
 
   def comment_notification(users, comment)
     @comment = comment
