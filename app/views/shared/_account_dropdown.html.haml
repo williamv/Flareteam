@@ -1,7 +1,6 @@
 %li.dropdown
   %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
-    - if @notifications > 0
-      %span.badge.badge-success= @notifications
+    = render partial: 'shared/notifications'
     = current_user.email
     %span.caret
   %ul.dropdown-menu
@@ -9,7 +8,6 @@
     %li
       = organization_link do
         Organization
-        - if @notifications > 0
-          %span.badge.badge-success= @notifications
+        = render partial: 'shared/notifications'
     %li.divider
     %li= link_to('Sign out', destroy_user_session_path, method: :delete)
