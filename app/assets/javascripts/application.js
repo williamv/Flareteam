@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ba-bbq.min
+//= require jquery-deparam
 //= require twitter/bootstrap
 //= require clientBehaviors
 //= require helpMailer
